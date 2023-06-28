@@ -111,8 +111,7 @@ header .flex {
   color: var(--white-color);
   padding-bottom: 30px;
   position: relative;
-  animation-name: showcase-text-keyframe;
-  animation-duration: 2s;
+  animation: to-down-keyframe 1.5s ease-in;
 }
 .showcase h1 {
   font-size: 40px;
@@ -120,12 +119,36 @@ header .flex {
   margin-bottom: 20px;
 }
 /* KEYFRAME */
-@keyframes showcase-text-keyframe {
+@keyframes to-down-keyframe {
   0% {
-    top: -200px;
+    transform: translateY(-100%);
   }
   100% {
-    top: 0px;
+    transform: translateY(0%);
+  }
+}
+@keyframes to-up-keyframe {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+@keyframes to-right-keyframe {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@keyframes to-left-keyframe {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
   }
 }
 
@@ -153,19 +176,11 @@ header .flex {
   font-size: 20px;
   font-weight: 300;
   position: relative;
-  animation-name: form-demo-keyframe;
-  animation-duration: 2s;
+  animation: to-up-keyframe 1.5s ease-in;
   margin: 0 auto;
   width: 400px;
 }
-@keyframes form-demo-keyframe {
-  0% {
-    top: 200px;
-  }
-  100% {
-    top: 0;
-  }
-}
+
 .form-demo input[type="text"],
 .form-demo input[type="email"] {
   border: none;
@@ -222,7 +237,7 @@ header .flex {
   padding: 40px;
 }
 .card {
-  border: 0.1px solid rgb(51, 51, 51, 0.1);
+  border: 0.5px solid rgb(51, 51, 51, 0.1);
   box-shadow: 1px 5px 5px 1px rgba(28, 63, 168, 0.3);
   padding: 20px;
   border-radius: 5px;
@@ -285,6 +300,57 @@ header .flex {
   transform: translateY(-10%);
 }
 
+/* FEATURES */
+.features-showcase {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  padding: 20px 0;
+}
+.features-showcase .grid {
+  grid-template-columns: 1fr;
+  justify-content: center;
+}
+.features-showcase-text {
+  text-align: center;
+}
+.features-showcase-text h1 {
+  font-size: 50px;
+  font-weight: lighter;
+}
+.features-showcase-img {
+  max-width: 200px;
+  margin: 0 auto;
+}
+.features-platform {
+  background-color: var(--white-color);
+  padding: 20px 0;
+}
+.features-platform .grid {
+  grid-template-columns: 1fr;
+  justify-content: center;
+}
+.features-platform-text {
+  text-align: center;
+}
+.features-platform-text h1 {
+  font-size: 50px;
+  font-weight: lighter;
+}
+.features-platform-img {
+  max-width: 300px;
+  margin: 0 auto;
+}
+/* features-card */
+.features-card {
+  margin: 20px 0;
+}
+.features-card .grid {
+  grid-template-columns: 1fr;
+}
+.features-card .card {
+  padding: 30px 10px;
+  margin: 15px;
+}
 /* FOOTER */
 footer {
   background-color: #002240;
@@ -338,22 +404,7 @@ footer > .container.flex {
   .logo {
     padding: 0 10px;
   }
-  @keyframes showcase-text-keyframe {
-    0% {
-      left: -200px;
-    }
-    100% {
-      left: 0px;
-    }
-  }
-  @keyframes form-demo-keyframe {
-    0% {
-      right: -200px;
-    }
-    100% {
-      right: 0;
-    }
-  }
+
   .showcase .grid {
     grid-template-columns: 1fr auto;
   }
@@ -363,6 +414,17 @@ footer > .container.flex {
   .showcase-text {
     text-align: left;
   }
+  .showcase-text {
+    animation: to-right-keyframe 1.5s ease-in;
+  }
+  .form-demo {
+    width: 400px;
+    animation: to-left-keyframe 1.5s ease-in;
+  }
+  .stats {
+    animation: to-up-keyframe 1.5s ease-in;
+  }
+
   .stats-number.grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -382,5 +444,49 @@ footer > .container.flex {
   }
   .cloud-title h2 {
     text-align: center;
+  }
+  footer {
+    padding: 30px 0;
+  }
+  footer .container.flex {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  /* features */
+  .features-showcase .grid {
+    grid-template-columns: 2fr 1fr;
+  }
+  .features-showcase-text {
+    text-align: left;
+  }
+  .features-showcase-text h1 {
+    font-size: 60px;
+  }
+  .features-platform {
+    background-color: rgb(51, 51, 51, 0.05);
+  }
+  .features-platform .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .features-platform-text {
+    text-align: left;
+  }
+  .features-card .grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    justify-content: center;
+  }
+  .features-card .card-server {
+    grid-column: 1/-1;
+  }
+  .features-card .card-network {
+    grid-column: 1 / span 2;
+    grid-row: 2/3;
+  }
+  .features-card .card {
+    padding: 10px 10px;
+    margin: 10px;
   }
 }
